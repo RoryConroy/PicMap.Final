@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PicMap</string>
+    <string name="button_addPlacemark">Add Picture</string>
+    <string name="button_savePlacemark">Save Picture</string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="button_changeImage">Change Image</string>
+    <string name="button_location">Set Location</string>
+    <string name="hint_placemarkTitle">Picture Title</string>
+    <string name="hint_placemarkDescription">Picture Short Description</string>
+    <string name="menu_addPlacemark">Add</string>
+    <string name="menu_cancelPlacemark">Cancel</string>
+    <string name="message_enter_title">Please enter a title for your image</string>
+    <string name="select_placemark_image">Select picture image</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="menu_deletePlacemark">Delete</string>
+    <string name="hint_editText2">long description</string>
+    <string name="app_search_bar">Search</string>
+    <string name="hint_editText3">DD/MM/YYYY</string>
+
+
+
+</resources>

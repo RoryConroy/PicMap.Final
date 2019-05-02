@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "284583767483",
+    "firebase_url": "https://picmap-128d1.firebaseio.com",
+    "project_id": "picmap-128d1",
+    "storage_bucket": "picmap-128d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284583767483:android:634c4d908a4ce143",
+        "android_client_info": {
+          "package_name": "org.wit.placemark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284583767483-l6knldjhl99719pc4eeifpl9msmj0ig1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wit.placemark",
+            "certificate_hash": "ff652eeb4ffb8d647bf03dbefe41bb4b506cb081"
+          }
+        },
+        {
+          "client_id": "284583767483-3a2ttpd174ubt49jp55dhqlmio2jamgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM6rD5x7y2JjyqMpEOnPza7um-otT96Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284583767483-3a2ttpd174ubt49jp55dhqlmio2jamgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
