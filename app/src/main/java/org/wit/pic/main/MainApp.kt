@@ -1,20 +1,20 @@
-package org.wit.placemark.main
+package org.wit.pic.main
 
 import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
-import org.wit.placemark.models.PlacemarkJSONStore
-import org.wit.placemark.models.PlacemarkStore
+import org.wit.pic.models.picJSONStore
+import org.wit.pic.models.picStore
 
 class MainApp: Application(), AnkoLogger {
 
-    lateinit var placemarks :PlacemarkStore
+    lateinit var pics :picStore
 
     override fun onCreate() {
         super.onCreate()
-        placemarks = PlacemarkJSONStore(applicationContext)
-        info("Placemark Started")
+        pics = picJSONStore(applicationContext)
+        info("pic Started")
         toast("Welcome to PicApp")
     }
 }

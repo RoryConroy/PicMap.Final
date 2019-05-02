@@ -7,7 +7,10 @@
     <color name="colorPrimaryDark">#000000</color>
     <!-- a secondary colour for controls like checkboxes
          and text fields.  -->
+
     <color name="colorAccent">#cc0606</color>
+
     <color name="colorCardview">#cc0606</color>
     <color name="colorCardtitle">#000000</color>
+    <color name="colorXML">#F2E3DF</color>
 </resources>

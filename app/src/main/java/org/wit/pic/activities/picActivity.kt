@@ -1,4 +1,4 @@
-package org.wit.placemark.activities
+package org.wit.pic.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -7,29 +7,29 @@ import android.os.Bundle
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_placemark.*
+import kotlinx.android.synthetic.main.activity_pic.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
-import org.wit.placemark.R
-import org.wit.placemark.helpers.readImage
-import org.wit.placemark.helpers.readImageFromPath
-import org.wit.placemark.helpers.showImagePicker
-import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.Location
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.pic.R
+import org.wit.pic.helpers.readImage
+import org.wit.pic.helpers.readImageFromPath
+import org.wit.pic.helpers.showImagePicker
+import org.wit.pic.main.MainApp
+import org.wit.pic.models.Location
+import org.wit.pic.models.picModel
 import android.widget.RatingBar
-import org.wit.placemark.models.PlacemarkJSONStore
+import org.wit.pic.models.picJSONStore
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
-class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
+class picActivity : AppCompatActivity(), AnkoLogger {
 
 
     var displayList:MutableList<String> =ArrayList()
-    var placemark = PlacemarkModel()
+    var pic = picModel()
     lateinit var app: MainApp
     var edit = false
     val IMAGE_REQUEST = 1
@@ -38,47 +38,47 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_placemark)
+        setContentView(R.layout.activity_pic)
         app = application as MainApp
 
-        if (intent.hasExtra("placemark_edit"))
+        if (intent.hasExtra("pic_edit"))
         {
-            placemark = intent.extras.getParcelable<PlacemarkModel>("placemark_edit")
-            placemarkTitle.setText(placemark.title)
-            placemarkDescription.setText(placemark.description)
-            editText2.setText(placemark.editText2)
-            editText3.setText(placemark.editText3)
-            placemarkImage.setImageBitmap(readImageFromPath(this, placemark.image))
-            btnAdd.setText(R.string.button_savePlacemark)
+            pic = intent.extras.getParcelable<picModel>("pic_edit")
+            picTitle.setText(pic.title)
+            picDescription.setText(pic.description)
+            editText2.setText(pic.editText2)
+            editText3.setText(pic.editText3)
+            picImage.setImageBitmap(readImageFromPath(this, pic.image))
+            btnAdd.setText(R.string.button_savepic)
             chooseImage.setText(R.string.button_changeImage)
             edit = true
         }
 
         btnAdd.setOnClickListener() {
-            placemark.title = placemarkTitle.text.toString()
-            placemark.description = placemarkDescription.text.toString()
-            placemark.editText2= editText2.text.toString()
-            placemark.editText3=editText3.text.toString()
-            if (placemark.title.isNotEmpty()) {
+            pic.title = picTitle.text.toString()
+            pic.description = picDescription.text.toString()
+            pic.editText2= editText2.text.toString()
+            pic.editText3=editText3.text.toString()
+            if (pic.title.isNotEmpty()) {
                 if (edit){
-                    app.placemarks.update(placemark.copy())
+                    app.pics.update(pic.copy())
                 }
                 else {
-                    app.placemarks.create(placemark.copy())
+                    app.pics.create(pic.copy())
                 }
-                info("Add Button Pressed. name: ${placemark.title}")
+                info("Add Button Pressed. name: ${pic.title}")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
             else {
                 toast ("please enter a title for your image")
             }
-            if (placemark.description.isEmpty()){
+            if (pic.description.isEmpty()){
 
 
                 toast("please edit and enter a description")
             }
-            if (placemark.editText3.isNullOrBlank()){
+            if (pic.editText3.isNullOrBlank()){
                 toast("please enter a date for the image")
             }
             else {
@@ -94,12 +94,12 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
 
         }
 
-        placemarkLocation.setOnClickListener{
+        picLocation.setOnClickListener{
             val location = Location(52.675332,  -6.295963, 15f)
-            if (placemark.zoom != 0f) {
-                location.lat =  placemark.lat
-                location.lng = placemark.lng
-                location.zoom = placemark.zoom
+            if (pic.zoom != 0f) {
+                location.lat =  pic.lat
+                location.lng = pic.lng
+                location.zoom = pic.zoom
             }
 
             startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
@@ -114,7 +114,7 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_placemark, menu)
+        menuInflater.inflate(R.menu.menu_pic, menu)
         if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
 
@@ -143,7 +143,7 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_delete -> {
-                app.placemarks.delete(placemark)
+                app.pics.delete(pic)
                 finish()
             }
             R.id.item_cancel -> {
@@ -158,8 +158,8 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
         when (requestCode){
             IMAGE_REQUEST -> {
                 if (data !=null){
-                    placemark.image = data.getData().toString()
-                    placemarkImage.setImageBitmap(readImage(this, resultCode, data))
+                    pic.image = data.getData().toString()
+                    picImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.button_changeImage)
                 }
 
@@ -167,9 +167,9 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
             LOCATION_REQUEST -> {
                 if (data != null){
                     val location = data.extras.getParcelable<Location>("location")
-                    placemark.lat = location.lat
-                    placemark.lng = location.lng
-                    placemark.zoom = location.zoom
+                    pic.lat = location.lat
+                    pic.lng = location.lng
+                    pic.zoom = location.zoom
                 }
             }
         }

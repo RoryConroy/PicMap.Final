@@ -5,7 +5,7 @@
     <item
         android:id="@+id/item_add"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/menu_addPlacemark"
+        android:title="@string/menu_addpic"
         app:showAsAction="always"/>
 
     <item

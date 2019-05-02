@@ -1,12 +1,12 @@
-package org.wit.placemark.models
+package org.wit.pic.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import java.util.*
-import org.wit.placemark.activities.PlacemarkActivity
+import org.wit.pic.activities.picActivity
 
 @Parcelize
-data class PlacemarkModel (var id: Long =0,
+data class picModel (var id: Long =0,
                            var title: String = "",
                            var description: String = "",
                            var image: String = "",

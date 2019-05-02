@@ -8,7 +8,7 @@
 
     android:elevation="24dp">
 
-    <RelativeLayout
+    <RelativeLayout android:background="@color/colorXML"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -22,7 +22,7 @@
             android:layout_marginLeft="16dp" />
 
         <TextView
-            android:id="@+id/placemarkTitleList"
+            android:id="@+id/picTitleList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -31,10 +31,10 @@
             android:textSize="30sp"/>
 
         <TextView
-            android:id="@+id/placemarkDescriptionList"
+            android:id="@+id/picDescriptionList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/placemarkTitleList"
+            android:layout_below="@id/picTitleList"
             android:layout_toLeftOf="@+id/imageViewList"
             android:textColor="@color/colorCardview"
             />

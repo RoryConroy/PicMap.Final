@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:284583767483:android:634c4d908a4ce143",
         "android_client_info": {
-          "package_name": "org.wit.placemark"
+          "package_name": "org.wit.pic"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "284583767483-l6knldjhl99719pc4eeifpl9msmj0ig1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "org.wit.placemark",
+            "package_name": "org.wit.pic",
             "certificate_hash": "ff652eeb4ffb8d647bf03dbefe41bb4b506cb081"
           }
         },

@@ -1,4 +1,4 @@
-package org.wit.placemark
+package org.wit.pic
 
 import org.junit.Test
 

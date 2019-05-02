@@ -1,32 +1,32 @@
-package org.wit.placemark.activities
+package org.wit.pic.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
-import kotlinx.android.synthetic.main.activity_placemark_list.*
+import kotlinx.android.synthetic.main.activity_pic_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
-import org.wit.placemark.PlacemarkAdapter
-import org.wit.placemark.PlacemarkListener
-import org.wit.placemark.R
-import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.PlacemarkModel
+import org.wit.pic.picAdapter
+import org.wit.pic.picListener
+import org.wit.pic.R
+import org.wit.pic.main.MainApp
+import org.wit.pic.models.picModel
 
-class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
+class picListActivity : AppCompatActivity(), picListener {
 
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_placemark_list)
+        setContentView(R.layout.activity_pic_list)
         app = application as MainApp
 
         //layout and populate for display
         val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager   //recyclerView is a widget in activity_placemark_list.xml
-        loadPlacemarks()
+        recyclerView.layoutManager = layoutManager   //recyclerView is a widget in activity_pic_list.xml
+        loadpics()
 
         //enable action bar and set title
         toolbarMain.title = title
@@ -40,27 +40,27 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.item_add -> startActivityForResult<PlacemarkActivity>(0)
+            R.id.item_add -> startActivityForResult<picActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPlacemarkClick(placemark: PlacemarkModel) {
-        startActivityForResult(intentFor<PlacemarkActivity>().putExtra("placemark_edit", placemark), 0)
+    override fun onpicClick(pic: picModel) {
+        startActivityForResult(intentFor<picActivity>().putExtra("pic_edit", pic), 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadPlacemarks()
+        loadpics()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun loadPlacemarks() {
-        showPlacemarks(app.placemarks.findAll())
+    private fun loadpics() {
+        showpics(app.pics.findAll())
     }
 
-    fun showPlacemarks (placemarks: List<PlacemarkModel>) {
-        //recyclerView is a widget in activity_placemark_list.xml
-        recyclerView.adapter = PlacemarkAdapter(placemarks, this)
+    fun showpics (pics: List<picModel>) {
+        //recyclerView is a widget in activity_pic_list.xml
+        recyclerView.adapter = picAdapter(pics, this)
         recyclerView.adapter?.notifyDataSetChanged()
 
     }
