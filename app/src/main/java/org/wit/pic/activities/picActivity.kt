@@ -27,7 +27,7 @@ import javax.xml.datatype.DatatypeConstants.MONTHS
 
 class picActivity : AppCompatActivity(), AnkoLogger {
 
-
+//variables
     var displayList:MutableList<String> =ArrayList()
     var pic = picModel()
     lateinit var app: MainApp
@@ -36,6 +36,7 @@ class picActivity : AppCompatActivity(), AnkoLogger {
     val LOCATION_REQUEST = 2
     //var location = Location(52.245696, -7.139102, 15f)
 
+    //create method
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pic)
@@ -53,6 +54,8 @@ class picActivity : AppCompatActivity(), AnkoLogger {
             chooseImage.setText(R.string.button_changeImage)
             edit = true
         }
+
+
 
         btnAdd.setOnClickListener() {
             pic.title = picTitle.text.toString()
@@ -88,12 +91,12 @@ class picActivity : AppCompatActivity(), AnkoLogger {
 
 
 
-
+//trigger picker
         chooseImage.setOnClickListener{
             showImagePicker(this, IMAGE_REQUEST)
 
         }
-
+//MAP API, lat lng represents where the camera begins when launched
         picLocation.setOnClickListener{
             val location = Location(52.675332,  -6.295963, 15f)
             if (pic.zoom != 0f) {
@@ -113,6 +116,8 @@ class picActivity : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarAdd)
     }
 
+
+    //options menu for add picture and searchbar(not yet working)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_pic, menu)
         if (edit && menu != null) menu.getItem(0).setVisible(true)

@@ -7,11 +7,15 @@ import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.wit.pic.helpers.*
 import java.util.*
+//implementations
+//gson used to convert java to or from java
 
 val JSON_FILE = "pics.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<picModel>>() {}.type
 
+
+//generates random id for each pic
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
@@ -19,6 +23,7 @@ fun generateRandomId(): Long {
 class picJSONStore : picStore, AnkoLogger {
 
     val context: Context
+    //array list
     var pics = mutableListOf<picModel>()
 
     constructor (context: Context) {
@@ -38,7 +43,7 @@ class picJSONStore : picStore, AnkoLogger {
         serialize()
     }
 
-
+//update the json collection
     override fun update(pic: picModel) {
         val picsList = findAll() as ArrayList<picModel>
         var foundpic: picModel? = picsList.find { p -> p.id == pic.id }
@@ -64,6 +69,8 @@ class picJSONStore : picStore, AnkoLogger {
         val jsonString = read(context, JSON_FILE)
         pics = Gson().fromJson(jsonString, listType)
     }
+
+    //delete from json collection
     override fun delete(pic: picModel) {
         pics.remove(pic)
         serialize()

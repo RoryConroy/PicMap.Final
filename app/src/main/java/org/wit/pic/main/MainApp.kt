@@ -15,6 +15,7 @@ class MainApp: Application(), AnkoLogger {
         super.onCreate()
         pics = picJSONStore(applicationContext)
         info("pic Started")
+        //appears when app is launched
         toast("Welcome to PicApp")
     }
 }

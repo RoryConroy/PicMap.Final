@@ -32,12 +32,14 @@ class picListActivity : AppCompatActivity(), picListener {
         toolbarMain.title = title
         setSupportActionBar(toolbarMain)
     }
-
+//inflate menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+
+    //implements menu event handler
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<picActivity>(0)
@@ -49,15 +51,20 @@ class picListActivity : AppCompatActivity(), picListener {
         startActivityForResult(intentFor<picActivity>().putExtra("pic_edit", pic), 0)
     }
 
+
+    //updates view to show new information entered
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         loadpics()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    //loads images,
     private fun loadpics() {
         showpics(app.pics.findAll())
     }
 
+
+    //show images in recycle view
     fun showpics (pics: List<picModel>) {
         //recyclerView is a widget in activity_pic_list.xml
         recyclerView.adapter = picAdapter(pics, this)

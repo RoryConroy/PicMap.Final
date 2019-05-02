@@ -11,7 +11,7 @@ import org.wit.pic.models.picModel
 import android.widget.RatingBar
 import kotlinx.android.synthetic.main.activity_pic.view.*
 
-
+//represents click on card view
 interface picListener {
     fun onpicClick(pic: picModel)
 }
@@ -28,8 +28,11 @@ class picAdapter constructor(private var pics: List<picModel>,
         holder.bind(pic, listener)
     }
 
+
     override fun getItemCount(): Int = pics.size
 
+
+    //to display into recycle view, must also be passed into card_pic.xml
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(pic: picModel,  listener : picListener) {

@@ -8,6 +8,7 @@
 
     android:elevation="24dp">
 
+    //cardview which shows the individual images collection after they have been created alongside the title and short description
     <RelativeLayout android:background="@color/colorXML"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

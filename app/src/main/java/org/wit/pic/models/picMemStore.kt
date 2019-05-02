@@ -17,7 +17,7 @@ class picMemStore : picStore, AnkoLogger {
     override fun findAll(): List<picModel> {
         return pics
     }
-
+//logs all pics
     override fun create(pic: picModel) {
         pic.id = getId()
         pics.add(pic)
@@ -38,11 +38,13 @@ class picMemStore : picStore, AnkoLogger {
             logAll()
         }
     }
-
+//logs all pics
     fun logAll() {
         pics.forEach { info("${it}") }
     }
 
+
+    //delete pic
     override fun delete(pic: picModel) {
         pics.remove(pic)
     }
